@@ -7,7 +7,7 @@ const JobResults = ({ jobs, onOptimize, onCoverLetter }) => {
     <div className="results">
       {jobs.map((job, idx) => (
         <div key={idx} className="job-card">
-          <p className="job-date"><strong>Posted:</strong>{new Date(job.date).toLocaleDateString()}</p>
+          <p className="job-date"><strong>Posted:</strong> {job.date && !isNaN(new Date(job.date)) ? new Date(job.date).toLocaleDateString() : 'Date unknown'}</p>
           <h3 className="job-title">{job.title}</h3>
           <p className="job-company"><strong>Company:</strong>{job.company}</p>
           <a className="job-link" href={job.link} target="_blank" rel="noreferrer">View Job</a>
