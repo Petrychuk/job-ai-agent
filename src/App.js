@@ -15,8 +15,9 @@ const App = () => {
     setLoading(true);
 
     try {
-        // 🧹 Очищаем от управляющих символов
-      const cleanResume = resume.replace(/[\u0000-\u001F\u007F-\u009F]/g, '');
+        // eslint-disable-next-line no-control-regex
+      const regex = new RegExp('[\\u0000-\\u001F\\u007F-\\u009F]', 'g');
+      const cleanResume = resume.replace(regex, '');  
 
       const response = await fetch(`${process.env.REACT_APP_API_URL}/api/search`, {
         method: 'POST',
